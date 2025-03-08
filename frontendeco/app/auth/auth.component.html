@@ -1,0 +1,12 @@
+<div *ngIf="!shouldHideAuthComponent()" class="auth-login-container">
+  <!-- Contenu du dialogue -->
+  <div class="tabs">
+    <button [class.active]="activeTab === 'login'" (click)="switchTab('login')">SE CONNECTER</button>
+    <button [class.active]="activeTab === 'signup'" (click)="switchTab('signup')">CRÉER UN COMPTE</button>
+  </div>
+
+  <div class="content">
+    <app-login *ngIf="activeTab === 'login'" (loginSuccess)="onLoginSuccess()"></app-login>
+    <app-signup *ngIf="activeTab === 'signup'"></app-signup>
+  </div>
+</div>

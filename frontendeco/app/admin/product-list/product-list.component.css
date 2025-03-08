@@ -1,0 +1,12 @@
+mat-table {
+  width: 100%;
+}
+
+mat-header-cell, mat-cell {
+  text-align: center;
+}
+
+button {
+  background-color: red;
+  color: white;
+}
