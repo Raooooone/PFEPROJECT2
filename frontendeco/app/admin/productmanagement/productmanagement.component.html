@@ -1,0 +1,52 @@
+ <!-- Vue Gestion Produit -->
+ <div *ngIf="isProductManagement">
+
+  <!-- Liste des produits -->
+  <div class="product-list">
+    <div *ngFor="let product of products" class="product-card mat-elevation-z3">
+      <img [src]="product.imageUrl" alt="Image du produit">
+      <div class="product-info">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <p class="price">
+          <strong>{{ product.price | currency:'TND':'symbol':'1.2-2' }}</strong>
+        </p>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="add-product-form mat-elevation-z3">
+    <h3>Ajouter un produit</h3>
+    <form (ngSubmit)="addProduct()">
+      
+      <div class="form-group">
+        <label for="productImage">Image du produit</label>
+        <input id="productImage" type="file" (change)="onFileSelected($event)" required>
+      </div>
+      <div *ngIf="imagePreview" class="image-preview">
+        <img [src]="imagePreview" alt="Aperçu de l'image">
+      </div>
+
+      
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nom du produit</mat-label>
+        <input matInput [(ngModel)]="newProduct.name" name="name" required>
+      </mat-form-field>
+
+      
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput [(ngModel)]="newProduct.description" name="description" required></textarea>
+      </mat-form-field>
+
+      
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Prix</mat-label>
+        <input matInput type="number" [(ngModel)]="newProduct.price" name="price" required>
+      </mat-form-field>
+
+      <button type="submit" mat-raised-button color="accent">Ajouter</button>
+    </form>
+  </div>
+</div>
